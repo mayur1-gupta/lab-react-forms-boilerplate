@@ -1,0 +1,81 @@
+
+body {
+  font-family: sans-serif;
+  margin: 5%;
+  padding: 0;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #dd9f9f;
+  border-radius: 5px;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.userName,
+.userEmail,
+.userPassword,
+.ConfirmPassword {
+  margin-bottom: 10px;
+}
+
+.userName label,
+.userEmail label,
+.userPassword label,
+.ConfirmPassword label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.userName input,
+.userEmail input,
+.userPassword input,
+.ConfirmPassword input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.btn {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  margin: 4px 30px;
+  border-radius: 5px;
+}
+
+.ErrorMessage,
+.SuccessMessage {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #af2c2c;
+}
+
+.ErrorMessage {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.SuccessMessage {
+  background-color: #2e8b57; /* Green */
+  color: white;
+}
+
+.Error{
+  color:#f44336;
+}
