@@ -8,58 +8,58 @@ function App() {
     password: '',
     confirmPassword: '',
   };
-  const [Values, setValues] = useState(initialingItem);
+  const [users, setusers] = useState(initialingItem);
   const [Errors, setErrors] = useState({});
   const [Submit, setSubmit] = useState(false);
 
-  const handleEvent = (e) => {
+  const handleEventChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...Values, [name]: value });
+    setusers({ ...users, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmitChange = (e) => {
     e.preventDefault();
-    setErrors(validate(Values));
+    setErrors(validation(users));
     setSubmit(true);
   };
 
   useEffect(() => {
     console.log(Errors);
     if (Object.keys(Errors).length === 0 && Submit) {
-      console.log(Values);
+      console.log(users);
     }
   }, [Errors, Submit]);
 
-  const validate = (values) => {
+  const validation = (users) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const regexSpecial = /[!@#$%^&*(),.?":{}|<>]/;
 
-    if (!values.name) {
+    if (!users.name) {
       errors.name = 'Required username!';
-    } else if (values.name.length < 3) {
+    } else if (users.name.length < 3) {
       errors.name = 'Username must have at least 3 characters!';
-    } else if (values.name.length > 30) {
+    } else if (users.name.length > 30) {
       errors.name = 'Username must have less than 30 characters!';
     }
 
-    if (!values.email) {
+    if (!users.email) {
       errors.email = 'Required Email!';
-    } else if (!regex.test(values.email)) {
+    } else if (!regex.test(users.email)) {
       errors.email = 'This is not a valid email format!';
     }
 
-    if (!values.password) {
+    if (!users.password) {
       errors.password = 'Required Password!';
-    } else if (values.password.length < 10) {
+    } else if (users.password.length < 10) {
       errors.password = 'Password must have more than 10 characters!';
-    } else if (!regexSpecial.test(values.password)) {
+    } else if (!regexSpecial.test(users.password)) {
       errors.password = 'Password must contain at least 1 special character!';
     }
 
-    if (!values.confirmPassword) {
+    if (!users.confirmPassword) {
       errors.confirmPassword = 'Required Confirm Password!';
-    } else if (values.confirmPassword !== values.password) {
+    } else if (users.confirmPassword !== users.password) {
       errors.confirmPassword = 'Confirm Password does not match!';
     }
 
@@ -68,14 +68,14 @@ function App() {
 
   return (
     <>
-      <div className='form'>
+      <div className='Form'>
         {Object.keys(Errors).length === 0 && Submit ? (
           <div className='SuccessMessage'>App successful!</div>
         ) : (
           <div className='ErrorMessage'></div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitChange}>
           <h1>App Form</h1>
           <div className='userName'>
             <label>Name</label>
@@ -83,8 +83,8 @@ function App() {
               type='text'
               name='name'
               placeholder='Enter your name...'
-              value={Values.name}
-              onChange={handleEvent}
+              value={users.name}
+              onChange={handleEventChange}
             />
           </div>
           <p className='Error'>{Errors.name}</p>
@@ -95,8 +95,8 @@ function App() {
               type='text'
               name='email'
               placeholder='Enter your email...'
-              value={Values.email}
-              onChange={handleEvent}
+              value={users.email}
+              onChange={handleEventChange}
             />
           </div>
           <p className='Error'>{Errors.email}</p>
@@ -107,8 +107,8 @@ function App() {
               type='password'
               name='password'
               placeholder='Enter your password...'
-              value={Values.password}
-              onChange={handleEvent}
+              value={users.password}
+              onChange={handleEventChange}
             />
           </div>
           <p className='Error'>{Errors.password}</p>
@@ -119,8 +119,8 @@ function App() {
               type='password'
               name='confirmPassword'
               placeholder='Confirm your password...'
-              value={Values.confirmPassword}
-              onChange={handleEvent}
+              value={users.confirmPassword}
+              onChange={handleEventChange}
             />
           </div>
           <p  className='Error'>{Errors.confirmPassword}</p>
